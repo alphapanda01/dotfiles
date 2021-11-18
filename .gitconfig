@@ -1,0 +1,4 @@
+[core]
+	pager = less -F
+[pull]
+	rebase = false
