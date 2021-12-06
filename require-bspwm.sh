@@ -3,7 +3,7 @@ echo "Only make for arch based distros"
 echo "Run with su privileges"
 
 # packages
-pacman -S copyq mpd
+pacman -S copyq mpd dmenu
 
 # Aur packages
 yay -S picom-jonaburg-git redshift \

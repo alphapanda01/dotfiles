@@ -1,21 +1,23 @@
 #=============================================================================
 # basic.toml --- basic configuration example for SpaceVim
-# Copyright (c) 2016-2020 Wang Shidong & Contributors
-# Author: Wang Shidong < wsdjeg at 163.com >
+# Copyright (c) 2016-2020 Wang Shidong & Contributors # Author: Wang Shidong < wsdjeg at 163.com >
 # URL: https://spacevim.org
 # License: GPLv3
 #=============================================================================
+
+[[layers]]
+  name = "colorscheme"
 
 # All SpaceVim option below [option] section
 [options]
     # set spacevim theme. by default colorscheme layer is not loaded,
     # if you want to use more colorscheme, please load the colorscheme
     # layer
-    colorscheme = "xcodedark"
-    #colorscheme_bg = "dark"
+    colorscheme = "onedark"
+    colorscheme_bg = "dark"
     # Disable guicolors in basic mode, many terminal do not support 24bit
     # true colors
-    enable_guicolors = false
+    enable_guicolors = true
     # Disable statusline separator, if you want to use other value, please
     # install nerd fonts
     guifont = "SourceCodePro Nerd Font Mono:h11"
@@ -28,33 +30,35 @@
     statusline_unicode_symbols = false
     # Enable vim compatible mode, avoid changing origin vim key bindings
     vimcompatible = true
+    automatic_update = true
+    filemanager = "nerdtree"
 
 # Enable autocomplete layer
 [[layers]]
-name = 'autocomplete'
-auto_completion_return_key_behavior = "complete"
-auto_completion_tab_key_behavior = "cycle"
+  name = 'autocomplete'
+  auto_completion_return_key_behavior = "complete"
+  auto_completion_tab_key_behavior = "cycle"
 
 [[layers]]
-name = 'shell'
-default_position = 'bottom'
-default_height = 30
+  name = 'shell'
+  default_position = 'bottom'
+  default_height = 30
 
 [[layers]]
   name = "lang#c"
-  clang_executable = "/usr/bin/gcc"
+  clang_executable = "/usr/bin/clang"
   clang_flag = ['-I/usr/include','-Wall','-Wextra']
   [layer.clang_std]
     c = "c11"
-    cpp = "c++1z"
+    cpp = "c++17"
     objc = "c11"
     objcpp = "c++1z"
+
+
+[[layers]]
+  name = "lang#assembly"
 
 [[layers]]
   name = 'lang#python'
   python_interpreter = '/usr/bin/python'
 
-
-
-[options]
-  filemanager = "nerdtree"
