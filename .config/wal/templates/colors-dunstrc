@@ -159,10 +159,10 @@
     ignore_newline = no
 
     # Stack together notifications with the same content
-    stack_duplicates = false
+    stack_duplicates = true
 
     # Hide the count of stacked notifications with the same content
-    hide_duplicate_count = false
+    hide_duplicate_count = true
 
     # Display indicators for URLs (U) and actions (A).
     show_indicators = yes
@@ -440,9 +440,7 @@
 #    set_stack_tag = "volume"
 #
 # vim: ft=cfg
-
-
-# This is apersonal script which plays sounds for notification
 [play_sound]
     summary = "*"
     script = ~/.config/personal_scripts/noti_sound/play.sh
+ 

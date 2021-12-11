@@ -1,5 +1,5 @@
 # TODO
-contains few sameple pictures from my wallpaper gallery, to make some scripts work
+contains few sample pictures from my wallpaper gallery, to make some scripts work
 
 Folders
 `ascii_art` - some random acii art, IDK why I uploaded it

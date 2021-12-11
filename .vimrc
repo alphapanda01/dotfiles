@@ -1,7 +1,7 @@
 "printf customisations no vi compatibility
 set nocompatible
 
-set clipboard=unnamedplus
+"set clipboard=unnamedplus
 
 " system turns on filetype. force it to off before pathogen
 filetype off
@@ -66,18 +66,6 @@ map <Leader>t <c-p>
 " dont show --insert-- below because lightline is showing it
 set noshowmode
 
-" lightline statusbar config to have git branch info
-let g:lightline = {
-      \ 'colorscheme': 'onehalfdark',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
-      \ },
-      \ }
-
 " move between windows easily
 map <C-H> <C-W>h
 map <C-J> <C-W>j
@@ -105,7 +93,25 @@ Plug 'preservim/nerdtree'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'rhysd/vim-clang-format'
 Plug 'dylanaraps/wal.vim'
- 
+
+" Nerd fonts
+Plug 'ryanoasis/vim-devicons'
+
+" Cool guy stuff
+Plug 'christoomey/vim-system-copy'
+Plug 'tpope/vim-surround'
+
+" Tags -> Install `ctags` for this
+Plug 'preservim/tagbar'
+
+" Git plugins
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'rbong/vim-flog'
+
+" Syntax
+" Plug 'vim-syntastic/syntastic'
+
 call plug#end()
 
 let g:airline_theme='supernova'
@@ -114,6 +120,8 @@ let g:airline_theme='supernova'
 " Display tabs
 let g:airline#extensions#tabline#enabled = 1
 
+" vim-airline stuff
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 " Nerd tree shortcuts
 nnoremap <leader>n :NERDTreeFocus<CR>
@@ -121,10 +129,13 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
-" colorscheme wal
 " colorscheme nord
-colorscheme dylan_vim
-hi Visual term=reverse cterm=reverse guibg=Grey
+" colorscheme dylan_vim
+colorscheme xcodedark
+" hi Visual term=reverse cterm=reverse guibg=Grey
+
+" Tags config
+nmap <F9> :TagbarToggle<CR>
 
 " https://github.com/octol/vim-cpp-enhanced-highlight
 let g:cpp_class_scope_highlight = 1
@@ -133,3 +144,23 @@ let g:cpp_class_decl_highlight = 1
 let g:cpp_experimental_simple_template_highlight = 1
 let g:cpp_concepts_highlight = 1
 
+
+" Git gutter config
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
+let g:gitgutter_show_msg_on_hunk_jumping = 0
+nmap <F9> :GitGutterToggle<CR>
+
+" syntastic config
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+
+" Resize splits
+nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
