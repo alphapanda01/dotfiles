@@ -74,6 +74,8 @@ map <C-L> <C-W>l
 
 let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|DS_Store\|.git'
 
+" ============================================================
+
 call plug#begin('~/.vim/plugged')
 
 " add plugins here
@@ -111,8 +113,11 @@ Plug 'rbong/vim-flog'
 
 " Syntax
 " Plug 'vim-syntastic/syntastic'
+Plug 'dense-analysis/ale'
 
 call plug#end()
+
+" =======================================================
 
 let g:airline_theme='supernova'
 " owo supernova serene
@@ -135,7 +140,7 @@ colorscheme xcodedark
 " hi Visual term=reverse cterm=reverse guibg=Grey
 
 " Tags config
-nmap <F9> :TagbarToggle<CR>
+nmap <F8> :TagbarToggle<CR>
 
 " https://github.com/octol/vim-cpp-enhanced-highlight
 let g:cpp_class_scope_highlight = 1
@@ -151,16 +156,36 @@ nmap [h <Plug>(GitGutterPrevHunk)
 let g:gitgutter_show_msg_on_hunk_jumping = 0
 nmap <F9> :GitGutterToggle<CR>
 
-" syntastic config
+" Syntastic options
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
 
 " let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_open = 0
 " let g:syntastic_check_on_wq = 0
+" let g:syntastic_loc_list_height=3
 
-" Resize splits
+" Toggle Syntastic
+" nmap <F7> :SyntasticToggleMode<CR> 
+
+" ALE options
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+" don't run ale until file save
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+" You can disable this option too
+" if you don't want linters to run on opening a file
+let g:ale_lint_on_enter = 0
+
+" Resize splits height
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+
+" resize width
+" nnoremap <C-]> :vertical res +3<CR>
+" nnoremap <C-[> :vertical res -3<CR>
