@@ -1,6 +1,6 @@
 # C++ runner 
 # $1 - filename
-# $2 - use type (2: valgrind, 1: normal) 
+# $2 - use type (3: gdb, 2: valgrind, 1: normal) 
 # $3 - CFLAGS
 
 start_time=$SECONDS
@@ -11,6 +11,9 @@ time_cmd="/usr/bin/time -f \"\n\nTime Taken: %E\nCPU Usage: %P\nMemory: %K\"" # 
 
 if [ $# -eq 0 ]; then
   echo -e "USAGE:\n$0 <file>.cpp/cc <run type> <Optional CFLAGS>"
+  echo -e "Run Types:\n\t1 - Normal with optinal CFLAGS enabled\
+    \n\t2 - run using valgrind with optional CFLAGS enabled\
+    \n\t3 - run using gdb with optional CFLAGS enabled"
   exit 1
 fi
 
@@ -19,6 +22,10 @@ if [ "$2" != "" ]; then # check if run type is given
     CFLAGS="-Wall -Wextra -g $3"
     compile="${CC} ${CFLAGS} $1"
     run="valgrind ./a.out"
+  elif [ $2 -eq 3 ]; then # use gdb
+    CFLAGS="-Wall -Wextra -g $3"
+    compile="${CC} ${CFLAGS} $1"
+    run="gdb ./a.out"
   elif [ $2 -eq 1 ]; then # normal run with extra compiler flags
     CFLAGS="-Wall -Wextra $3"
     compile="${CC} ${CFLAGS} $1"

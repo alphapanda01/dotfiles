@@ -1,5 +1,6 @@
 #background_opacity: 0.{alpha}
-background_opacity: 0.9
+#background_opacity: 0.9
+window.opacity: 0.9
 
 # Colors (Gruvbox dark)
 colors:
