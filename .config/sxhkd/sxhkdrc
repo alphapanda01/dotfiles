@@ -34,7 +34,7 @@ super + x
 
 #kill polybar
 super + shift + m
-     killall -q polybar
+     bash ~/.config/polybar/mic-volume.sh mute-vol
 
 #picom
 super + p
@@ -206,3 +206,8 @@ super + Escape
 #dunst controls
 ctrl + grave
   dunstctl history-pop
+
+
+# useful shortcuts
+super + w
+  firefox --private-window
