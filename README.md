@@ -1,10 +1,15 @@
 # Welcome to my dotfiles cesspool
 
-### WIP
 ### Structure
   - Pictures - Some sample wallpaper and art
   - Scripts  - Some random scripts 
   - .config  - .config folder
+  - xorg.config.d - contains X config (Beware some are hardware specific)
+  - .bashrc - I don't use it, but it exists for some reason
+  - .gitconfig - my global gitconfig
+  - .vimrc - My favorite editor's config file
+  - .zshrc - The best shell
+  - require-bspwm.sh - some required packages to run my config files in bspwm(Outdated)
 
 
 ### INSTALLATION
