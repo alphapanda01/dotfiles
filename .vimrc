@@ -1,6 +1,5 @@
 "printf customisations no vi compatibility
 set nocompatible
-
 "set clipboard=unnamedplus
 
 " system turns on filetype. force it to off before pathogen
@@ -19,6 +18,9 @@ set encoding=utf-8
 
 " selection stuff
 se mouse+=a
+set ttymouse=xterm2
+set ballooneval
+set balloonevalterm
 
 " General Settings
 set nowrap
@@ -29,6 +31,11 @@ set noswapfile
 set wildmenu
 set number
 set autoindent
+set relativenumber
+
+
+" Fix annoying block cursor on alacritty
+autocmd BufWinLeave * !cursor-reset.sh
 
 " Search stuff
 set ignorecase
@@ -36,14 +43,14 @@ set smartcase
 set incsearch
 set hlsearch
 nnoremap <CR> :nohlsearch<CR><CR>
+set path+=/usr/include/c++/11.2.0
 
 " Whitespace stuff
 set nowrap
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab
-
 
 " leader key will be comma ( , )
 let mapleader = ","
@@ -74,6 +81,10 @@ map <C-L> <C-W>l
 
 let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|DS_Store\|.git'
 
+" My Shortcuts
+set termwinsize=15x0
+map <C-s> :terminal<CR>
+
 " ============================================================
 
 call plug#begin('~/.vim/plugged')
@@ -94,10 +105,12 @@ Plug 'preservim/nerdtree'
 " Plug 'arcticicestudio/nord-vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'rhysd/vim-clang-format'
-Plug 'dylanaraps/wal.vim'
 
 " Nerd fonts
 Plug 'ryanoasis/vim-devicons'
+
+" Xcode color scheme
+Plug 'arzg/vim-colors-xcode'
 
 " Cool guy stuff
 Plug 'christoomey/vim-system-copy'
@@ -115,24 +128,30 @@ Plug 'rbong/vim-flog'
 " Plug 'vim-syntastic/syntastic'
 Plug 'dense-analysis/ale'
 
+" Fzf 
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 call plug#end()
 
 " =======================================================
 
-let g:airline_theme='supernova'
-" owo supernova serene
-
-" Display tabs
-let g:airline#extensions#tabline#enabled = 1
-
 " vim-airline stuff
 let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#ale#enabled = 1 " Work with airline
+let g:airline_theme='deus'
+" owo supernova serene deus
+let g:airline#extensions#tabline#enabled = 1 " Display tabs
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_symbols.colnr = '  %'
+
 
 " Nerd tree shortcuts
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
 
 " colorscheme nord
 " colorscheme dylan_vim
@@ -174,6 +193,14 @@ nmap <F9> :GitGutterToggle<CR>
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+nmap <F10> :ALEToggle<CR> 
+
+" Ale ballon
+let g:ale_hover_cursor = 0
+let g:ale_set_balloons = 1
+let g:ale_floating_preview = 1
 
 " don't run ale until file save
 let g:ale_lint_on_text_changed = 'never'
@@ -189,3 +216,9 @@ nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 " resize width
 " nnoremap <C-]> :vertical res +3<CR>
 " nnoremap <C-[> :vertical res -3<CR>
+
+" fzf plugins
+nnoremap <C-f> :Files<CR>
+
+" Local vimrc 
+let g:localrc_filename = ".local.vimrc"
