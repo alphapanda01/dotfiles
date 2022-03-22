@@ -35,7 +35,12 @@ set relativenumber
 
 
 " Fix annoying block cursor on alacritty
-autocmd BufWinLeave * !cursor-reset.sh
+autocmd BufWinLeave * silent !cursor-reset.sh
+
+" The escape shenanigans
+autocmd VimEnter * silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape' 
+autocmd VimLeave * silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock' 
+
 
 " Search stuff
 set ignorecase
@@ -43,7 +48,7 @@ set smartcase
 set incsearch
 set hlsearch
 nnoremap <CR> :nohlsearch<CR><CR>
-set path+=/usr/include/c++/11.2.0
+set path+=/usr/include/c++/**/**,/usr/lib/gcc/**/**
 
 " Whitespace stuff
 set nowrap
@@ -78,8 +83,6 @@ map <C-H> <C-W>h
 map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <C-L> <C-W>l
-
-let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|DS_Store\|.git'
 
 " My Shortcuts
 set termwinsize=15x0
@@ -131,6 +134,12 @@ Plug 'dense-analysis/ale'
 " Fzf 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
+" CtrlP TODO
+" Plug 'ctrlpvim/ctrlp.vim'
+
+" Simple text auto completion
+Plug 'Raimondi/delimitMate'
 
 call plug#end()
 
@@ -195,7 +204,13 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
+
+" Ale shortcuts
 nmap <F10> :ALEToggle<CR> 
+nmap ]a :ALENextWrap<CR>
+nmap [a :ALEPreviousWrap<CR>
+nmap ]A :ALELast
+nmap [A :ALEFirst
 
 " Ale ballon
 let g:ale_hover_cursor = 0
@@ -217,8 +232,19 @@ nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 " nnoremap <C-]> :vertical res +3<CR>
 " nnoremap <C-[> :vertical res -3<CR>
 
-" fzf plugins
+" fzf config
 nnoremap <C-f> :Files<CR>
+
+" CtrlP stuff
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+let g:ctrlp_working_path_mode = 'ra'
 
 " Local vimrc 
 let g:localrc_filename = ".local.vimrc"
