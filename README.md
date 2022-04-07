@@ -7,7 +7,7 @@
   - xorg.config.d - contains X config (Beware some are hardware specific)
   - .bashrc - I don't use it, but it exists for some reason
   - .gitconfig - my global gitconfig
-  - .vimrc - My favorite editor's config file
+  - vim - My favorite editor's config files
   - .zshrc - The best shell
   - require-bspwm.sh - some required packages to run my config files in bspwm(Outdated)
 
@@ -17,7 +17,7 @@
 #### Vim installation
 - install vim(ofc)
 - clone and install VimPlug (https://github.com/junegunn/vim-plug)
-- copy `.vimrc` to `$HOME`
+- copy `vim/.vimrc` to `$HOME`
 - type `:PlugInstall` in vim cmd
 
 #### shell
