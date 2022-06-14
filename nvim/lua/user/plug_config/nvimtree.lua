@@ -12,6 +12,7 @@ end
 
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
+
 nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
   auto_reload_on_write = true,
   create_in_closed_folder = false,
@@ -41,7 +42,7 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
     mappings = {
       custom_only = false,
       list = {
-        -- user mappings go here
+		  {key = {"<C-t>"}, action = ""}, -- Close tree 
       },
     },
   },

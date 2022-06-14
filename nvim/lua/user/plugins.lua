@@ -11,6 +11,9 @@ return require('packer').startup(function()
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
 
+	-- Fass a fuqboi
+	use 'lewis6991/impatient.nvim'
+
 	-- Colors
 	-- use({
 	-- 	"catppuccin/nvim",
@@ -34,7 +37,7 @@ return require('packer').startup(function()
 	use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
 
     -- Buffers and buffer line
-    use "akinsho/bufferline.nvim" -- ugly gui type buffer line
+    use "akinsho/bufferline.nvim" -- ugly gui type buffer line for displaying windows(buffers)
     use "moll/vim-bbye" -- Don't close window when buffer is closed
 
 
@@ -49,6 +52,8 @@ return require('packer').startup(function()
 
 	-- Smexy notifications
 	use {'rcarriga/nvim-notify', as="notify"}
+	use {'nvim-lualine/lualine.nvim'}
+
 
     -- LSP Stuff
 	use "williamboman/nvim-lsp-installer" -- Insatlls lsps
@@ -93,7 +98,9 @@ return require('packer').startup(function()
 	-- GIT
 	use "lewis6991/gitsigns.nvim"
 	
-
     -- Indent guides
     use 'lukas-reineke/indent-blankline.nvim'
+
+	-- Shows which key that can be used next
+	use { "folke/which-key.nvim" }
 end)

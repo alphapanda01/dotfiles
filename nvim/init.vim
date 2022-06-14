@@ -35,24 +35,16 @@ set pumheight=8
 set cmdheight=2 " More space for cli to display messages
 
 let mapleader = " "
-nnoremap <SPACE> <Nop> " Set leader to space
+" nnoremap <SPACE> <Nop> " Set leader to space
 
 " Cursor stuff
 set guicursor=
 
 " ================================
 
-" Setup packer and plugins plugins
-"
-" Check and install packer if not installed
-lua require('user') 
 " Plugins
-" lua require('user/plugins')  
-
-" Plugin specific config
-" lua require('user/cmp') 
-" lua require('user/terminal') 
-" lua require('user/lsp')
+" Loads and setups plugins
+lua require('user') 
 
 
 
@@ -70,6 +62,9 @@ colorscheme kanagawa
 " Convert CapsLock to Esc
 autocmd VimEnter * silent !esc-capslock.sh 1
 autocmd VimLeave * silent !esc-capslock.sh 0
+
+" Clear search highlight
+nnoremap <CR> :nohlsearch<CR><CR>
 
 " Navigate between windows
 nnoremap <C-h> <C-w>h
@@ -91,8 +86,6 @@ nnoremap <S-h> :bprev<CR>
 " Close the buffer
 nnoremap <S-d> :bd<CR>
 
-" Open terminal
-" nnoremap <leader>t :terminal<CR> " Done by toggleterm
 
 " Map Esc to terminal mode
 tnoremap <Esc> <C-\><C-n>
@@ -101,12 +94,25 @@ tnoremap <Esc> <C-\><C-n>
 vnoremap > >gv
 vnoremap < <gv
 
+
+" Plugins based keybinds
+
 " Telescope
 nnoremap <C-f> :Telescope find_files<CR>
 nnoremap <C-g> :Telescope live_grep<CR>
 
 " Dir Tree
 nnoremap <C-t> :NvimTreeToggle<CR>
-inoremap <C-t> <ESC>:NvimTreeFocus<CR>
+" inoremap <C-t> <ESC>:NvimTreeFocus<CR>
+
+" Lazygit
+nnoremap <leader>g :LazyGit<CR>
+
+" Open terminal (also ctrl-\)
+" nnoremap <leader>t :terminal<CR> 
+" Open terminal vertical
+nnoremap <leader>t <Cmd>exe v:count1 . "ToggleTerm size=40 direction=vertical"<CR>
+nnoremap <leader>T :ToggleTermToggleAll<CR> " closes are open all the terminals
+
 
 " ==========================================

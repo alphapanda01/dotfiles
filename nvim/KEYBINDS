@@ -32,7 +32,11 @@
 
 + Terminal
     - `Ctrl \`
-	- `:LazyGit`
+	- `:LazyGit` => `<leader>`g
+	- NUM + `Ctrl \` -> horizontal terminal number 
+	- NUM `<leader>t`  -> same as above but vertical
+	- `<leader>`T => Toggles all terminals hide or open
+
 
 + Increase window size
     - `Ctrl UP`
@@ -40,3 +44,11 @@
 
 + Move windows
     - `Ctrl Alt j/k/l/h`
+
++ Open tree
+	- `Ctrl t` -> toggles nvimtree
+
++ Moving between buffers
+	- `L` `(Shift + l)` -> to right
+	- `H` `(Shift + h)` -> to left
+	- `D` `(Shift + D)` -> :bd
