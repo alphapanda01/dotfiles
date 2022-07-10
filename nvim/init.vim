@@ -3,6 +3,7 @@
 filetype plugin indent on
 set nowrap
 set relativenumber
+set number
 set autoindent
 set tabstop=4
 set softtabstop=4
@@ -53,6 +54,8 @@ lua require('user')
 let g:catppuccin_flavour = "mocha"
 " colorscheme catppuccin
 colorscheme kanagawa
+" colorscheme tokyonight
+
 " =============================
 
 
@@ -65,6 +68,9 @@ autocmd VimLeave * silent !esc-capslock.sh 0
 
 " Clear search highlight
 nnoremap <CR> :nohlsearch<CR><CR>
+
+" Split window
+nnoremap <C-s> :vsplit<CR>
 
 " Navigate between windows
 nnoremap <C-h> <C-w>h
@@ -84,7 +90,7 @@ nnoremap <S-l> :bnext<CR>
 nnoremap <S-h> :bprev<CR>
 
 " Close the buffer
-nnoremap <S-d> :bd<CR>
+nnoremap <S-d> :Bdelete<CR>
 
 
 " Map Esc to terminal mode
@@ -100,6 +106,7 @@ vnoremap < <gv
 " Telescope
 nnoremap <C-f> :Telescope find_files<CR>
 nnoremap <C-g> :Telescope live_grep<CR>
+nnoremap <leader><S-q> :Telescope tagstack<CR>
 
 " Dir Tree
 nnoremap <C-t> :NvimTreeToggle<CR>
@@ -112,7 +119,18 @@ nnoremap <leader>g :LazyGit<CR>
 " nnoremap <leader>t :terminal<CR> 
 " Open terminal vertical
 nnoremap <leader>t <Cmd>exe v:count1 . "ToggleTerm size=40 direction=vertical"<CR>
-nnoremap <leader>T :ToggleTermToggleAll<CR> " closes are open all the terminals
+
+" closes/open all the terminals
+nnoremap <leader><S-t> :ToggleTermToggleAll<CR> 
 
 
 " ==========================================
+
+
+" GUI nvim settings (neovide)
+"======================================================
+
+set guifont=Source\ Code\ Pro:h8
+inoremap <C-S-v> "+p
+"======================================================
+

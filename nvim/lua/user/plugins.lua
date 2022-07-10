@@ -103,4 +103,7 @@ return require('packer').startup(function()
 
 	-- Shows which key that can be used next
 	use { "folke/which-key.nvim" }
+	
+	-- lsp highlight color fix
+	use 'folke/lsp-colors.nvim'
 end)

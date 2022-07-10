@@ -8,6 +8,7 @@ require("user/plug_config/impatient")
 require("user/plug_config/notify") -- Setup notifications
 
 require('user/plug_config/lualine')
+require('user/plug_config/kana')
 require('user/plug_config/cmp')
 require('user/plug_config/terminal')
 require('user/plug_config/telescope')
@@ -24,3 +25,4 @@ require('user/plug_config/whichkey')
 
 -- LSP
 require('user/lsp')
+require('user/plug_config/rust_tools')

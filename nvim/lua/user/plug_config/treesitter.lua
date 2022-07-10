@@ -4,14 +4,13 @@ configs.setup {
   -- ensure_installed = "maintained",
   sync_install = false, 
   ignore_install = { "" }, -- List of parsers to ignore installing
-  autoparis = { enable = true },
+  autopairs = { enable = true },
   highlight = {
     enable = true, -- false will disable the whole extension
     disable = { "" }, -- list of language that will be disabled
     additional_vim_regex_highlighting = true,
-
   },
-  indent = { enable = true, disable = { "yaml" } },
+  indent = { enable = true, disable = { "yaml", "rust", "cpp" } },
   
   -- Comments
   context_commentstring = {
@@ -26,6 +25,17 @@ configs.setup {
     extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
     max_file_lines = nil, -- Do not enable for files with more than n lines, int
     -- colors = {}, -- table of hex strings
+		colors = {
+		-- Kanagawa colors
+		"#957FB8",
+		"#6A9589",
+		"#658594",
+		"#727169",
+		"#938AA9",
+		"#9CABCA",
+		"#7FB4CA"
+	}
+
     -- termcolors = {} -- table of colour name strings
   },
 
